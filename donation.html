@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate to Lord Sameer's Fundraiser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container_d">
+        <h1>Welcome <style></style><span id="friend-name"></span></h1>
+        <h2>Your total donation: ₹<span id="friend-donation"></span></h2>
+        <div id="top-donor-container">
+            <p id="top-donor">Baap Donor: <span id="top-donor-name"></span></p>
+        </div>
+        <div id="qr-code-container" class="qr-code-container">
+            <img id="qr-code" src="qr_code_image.jpg" alt="QR Code to Donate">
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const friend = JSON.parse(localStorage.getItem('currentFriend'));
+            const friends = JSON.parse(localStorage.getItem('friends'));
+
+            if (friend) {
+                document.getElementById('friend-name').textContent = friend.name;
+                document.getElementById('friend-donation').textContent = friend.donation;
+                
+                // Display the top donor
+                const topDonor = friends.reduce((max, friend) => friend.donation > max.donation ? friend : max, friends[0]);
+                document.getElementById('top-donor-name').textContent = topDonor.name;
+            }
+        });
+    </script>
+</body>
+</html>

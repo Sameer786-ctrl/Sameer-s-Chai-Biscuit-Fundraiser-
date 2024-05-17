@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord Sameer's Chai Biscuit Fundraiser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container_i">
+        <h1>Welcome to Lord Sameer's Chai Biscuit Fundraiser</h1>
+        <p class="verify">Please verify yourself</p>
+        <div id="friend-list" class="friend-list">
+            <!-- Friends will be dynamically loaded here -->
+        </div>
+        <div id="add-friend-container" class="add-friend-container">
+            <div class="arrow-sign">+</div>
+            <div id="add-friend" class="add-friend">Register yourself</div>
+        </div>
+        <div id="qr-code-container" class="qr-code-container">
+            <img id="qr-code" src="" alt="QR Code" style="display:none;">
+        </div>
+    </div>
+    <div class="floating-elements">
+        <img src="chai.png" class="floating-element" style="--i:1;" alt="Chai">
+        <img src="chai2.png" class="floating-element" style="--i:4;" alt="Biscuit">
+        <img src="chai2.png" class="floating-element" style="--i:3;" alt="Chai">
+        <img src="chai.png" class="floating-element" style="--i:2;" alt="Biscuit">
+
+
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const friendList = document.getElementById('friend-list');
+            const addFriend = document.getElementById('add-friend');
+            const qrCodeContainer = document.getElementById('qr-code-container');
+            const qrCode = document.getElementById('qr-code');
+
+            function loadFriends() {
+                const friends = JSON.parse(localStorage.getItem('friends')) || [
+                    { name: 'Lord Ved', donation: 0 },
+                    { name: 'Lord DD', donation: 0 },
+                    { name: 'Narkhede (lord soon)', donation: 0 }
+                ];
+                friendList.innerHTML = '';
+                friends.forEach(friend => {
+                    const div = document.createElement('div');
+                    div.className = 'friend-item';
+                    div.dataset.qr = 'qr_code_image.jpg'; // Modify as needed for different QR codes
+                    div.innerHTML = `<span>${friend.name}</span><span class="donation">₹${friend.donation}</span>`;
+                    div.addEventListener('click', function() {
+                        localStorage.setItem('currentFriend', JSON.stringify(friend));
+                        window.location.href = 'donation.html';
+                    });
+                    friendList.appendChild(div);
+                });
+            }
+
+            addFriend.addEventListener('click', function() {
+                const newFriend = prompt('Enter your name:');
+                if (newFriend) {
+                    const friends = JSON.parse(localStorage.getItem('friends')) || [];
+                    friends.push({ name: newFriend, donation: 0 });
+                    localStorage.setItem('friends', JSON.stringify(friends));
+                    loadFriends();
+                }
+            });
+
+            loadFriends();
+        });
+    </script>
+</body>
+</html>

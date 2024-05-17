@@ -1,0 +1,140 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.container_i {
+    text-align: center;
+}
+.container_d {
+    text-size-adjust: 10px;
+}
+
+.top-donor{
+    align-content: end;
+    
+
+}
+
+.arrow-sign {
+   align-self: center;
+}
+
+.qr-code-container{
+
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.verify {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.friend-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friend-item {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    margin: 10px 0;
+    width: 200px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.friend-item:hover {
+    background-color: #e0e0e0;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+.donation {
+    margin-left: 10px;
+}
+
+.add-friend-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.add-friend {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    width: 150px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.add-friend:hover {
+    background-color: #e0e0e0;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.qr-code{
+    size: 100px;
+}
+
+.floating-element {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    opacity: 0.7;
+    animation: float 20s linear infinite;
+}
+
+.floating-element:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+.floating-element:nth-child(2) { top: 10%; left: 60%; animation-delay: 2s; }
+.floating-element:nth-child(3) { top: 60%; left: 80%; animation-delay: 4s; }
+.floating-element:nth-child(4) { top: 80%; left: 30%; animation-delay: 6s; }
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+}
